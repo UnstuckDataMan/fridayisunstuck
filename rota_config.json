@@ -1,0 +1,13 @@
+{
+  "members": [
+    "Chris",
+    "Dylan",
+    "Elizma",
+    "Leo",
+    "Oliver"
+  ],
+  "start_member": "Chris",
+  "slack_webhook_url": "",
+  "slack_id_map": {},
+  "overrides": {}
+}
