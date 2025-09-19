@@ -1,4 +1,3 @@
-```yaml
 name: Friday Rota – Slack reminder
 
 on:
@@ -31,4 +30,3 @@ jobs:
           open(p,'w').write(json.dumps(cfg, indent=2))"
       - name: Run notifier
         run: python notify.py
-```
