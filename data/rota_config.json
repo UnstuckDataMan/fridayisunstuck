@@ -1,11 +1,5 @@
 {
-  "members": [
-    "Chris",
-    "Dylan",
-    "Elizma",
-    "Leo",
-    "Oliver"
-  ],
+  "members": ["Chris", "Dylan", "Elizma", "Leo", "Oliver"],
   "start_member": "Chris",
   "slack_webhook_url": "https://hooks.slack.com/services/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",
   "slack_id_map": {
@@ -13,7 +7,7 @@
     "Dylan": "U08CR0JF93P",
     "Elizma": "U09DX6T57V4",
     "Leo": "U02RBF0PHQU",
-    "Oliver": "U02RYU4MWTS",
+    "Oliver": "U02RYU4MWTS"
   },
   "overrides": {}
 }
