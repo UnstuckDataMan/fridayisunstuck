@@ -1,8 +1,9 @@
+```yaml
 name: Friday Rota – Slack reminder
 
 on:
   schedule:
-    - cron: "0 7 * * 3"
+    - cron: "0 7 * * 3"   # Wednesdays 07:00 UTC
   workflow_dispatch: {}
 
 jobs:
@@ -24,17 +25,21 @@ jobs:
             echo '{"members":["Chris","Dylan","Elizma","Leo","Oliver"],"start_member":"Chris","slack_webhook_url":"","slack_id_map":{},"overrides":{}}' > data/rota_config.json
           fi
       - name: Inject Slack secret into config (if empty)
-        run: |
-          python - <<'PY'
-import json, os
-p = 'data/rota_config.json'
-with open(p,'r',encoding='utf-8') as f: cfg=json.load(f)
-if not cfg.get('slack_webhook_url'):
-    cfg['slack_webhook_url']=os.environ.get('SLACK_WEBHOOK_URL','')
-with open(p,'w',encoding='utf-8') as f: json.dump(cfg,f,indent=2)
-print('Config prepared.')
-PY
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          python - <<'PY'
+          import json, os
+          p = 'data/rota_config.json'
+          with open(p, 'r', encoding='utf-8') as f:
+              cfg = json.load(f)
+          if not cfg.get('slack_webhook_url'):
+              cfg['slack_webhook_url'] = os.environ.get('SLACK_WEBHOOK_URL', '')
+          with open(p, 'w', encoding='utf-8') as f:
+              json.dump(cfg, f, indent=2)
+          print('Config prepared.')
+          PY
       - name: Run notifier
         run: python notify.py
+```
+
